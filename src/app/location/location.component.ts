@@ -9,7 +9,7 @@ import { LocationModel } from './location.model';
 })
 export class LocationComponent implements OnInit {
 
-  output: string;
+  output: LocationModel;
   error: string;
 
   constructor(
@@ -20,7 +20,7 @@ export class LocationComponent implements OnInit {
   }
 
   clear() {
-    this.output = '';
+    this.output = null;
     this.error = '';
   }
 
@@ -28,7 +28,7 @@ export class LocationComponent implements OnInit {
     this.locationService.getLocation()
       .subscribe(
         (data: LocationModel)  => {
-          this.output = JSON.stringify(data, null, ' ');
+          this.output = data;
         },
         error => this.error = error
       );

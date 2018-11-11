@@ -1,7 +1,20 @@
 <div>
   <h3>Fetch Location Data</h3>
+  <p *ngIf="!output">Click on the button below to find your location data</p>
   <button *ngIf="!output" (click)="showLocation()">Get Location Data</button>
+  <div *ngIf="output">
+    <p>Location data recieved as follows:</p>
+    <ul>
+      <li class="itemType"><span class="boldType">Internet Service Provider:</span> {{output.isp}}</li>
+      <li class="itemType"><span class="boldType">City:</span> {{output.city}}</li>
+      <li class="itemType"><span class="boldType">Region Name:</span> {{output.regionName}}</li>
+      <li class="itemType"><span class="boldType">Zip Code:</span> {{output.zip}}</li>
+      <li class="itemType"><span class="boldType">Country:</span> {{output.country}}</li>
+      <li class="itemType"><span class="boldType">Latitude:</span> {{output.lat}}</li>
+      <li class="itemType"><span class="boldType">Longitude:</span> {{output.lon}}</li>
+      <li class="itemType"><span class="boldType">Timezone:</span> {{output.timezone}}</li>
+    </ul>
+  </div>
+  <p *ngIf="error" class="error"><span class="itemType">Error:</span> {{error | json}}</p>
   <button *ngIf="output" (click)="clear()">Clear Location Data</button>
-  <div *ngIf="output">Reading output: "{{output}}"</div>
-  <div *ngIf="error" class="error">error: {{error | json}}</div>
 </div>
