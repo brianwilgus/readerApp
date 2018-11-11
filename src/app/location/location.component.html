@@ -1,7 +1,7 @@
 <div>
   <h3>Fetch Location Data</h3>
-  <button (click)="clear(); showLocation()">Get Location Data</button>
+  <button *ngIf="!output" (click)="showLocation()">Get Location Data</button>
+  <button *ngIf="output" (click)="clear()">Clear Location Data</button>
   <div *ngIf="output">Reading output: "{{output}}"</div>
-  <div *ngIf="output">As JSON: "{{output | json}}"</div>
-  <div *ngIf="error" class="error">{{error | json}}</div>
+  <div *ngIf="error" class="error">error: {{error | json}}</div>
 </div>
