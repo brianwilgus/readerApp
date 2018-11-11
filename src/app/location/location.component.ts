@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocationService } from './location.service';
 import { LocationModel } from './location.model';
 
 @Component({
@@ -8,9 +9,28 @@ import { LocationModel } from './location.model';
 })
 export class LocationComponent implements OnInit {
 
-  constructor() { }
+  output: string;
+  error: string;
+
+  constructor(
+    private locationService: LocationService
+  ) { }
 
   ngOnInit() {
   }
 
+  clear() {
+    this.output = '';
+    this.error = '';
+  }
+
+  showLocation() {
+    this.locationService.getLocation()
+      .subscribe(
+        (data: LocationModel)  => {
+          this.output = JSON.stringify(data, null, ' ');
+        },
+        error => this.error = error
+      );
+  }
 }

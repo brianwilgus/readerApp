@@ -1,25 +1,16 @@
 export interface LocationModel {
-    ip: string;
-    hostname: string;
-    type: string;
-    continent_code: string;
-    continent_name: string;
-    country_code: string;
-    country_name: string;
-    region_code: string;
-    region_name: string;
+    as: string;
     city: string;
+    country: string;
+    countryCode: string;
+    isp: string;
+    lat: number;
+    lon: number;
+    org: string;
+    query: string;
+    region: number;
+    regionName: string;
+    status: string;
+    timezone: string;
     zip: string;
-    latitude: number;
-    longitude: number;
-    location: {
-        geoname_id: number;
-        capital: string;
-        languages: any;
-        country_flag: string;
-        country_flag_emoji: string;
-        country_flag_emoji_unicode: string;
-        calling_code: string;
-        is_eu: boolean;
-    };
   }
